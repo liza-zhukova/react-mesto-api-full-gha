@@ -1,6 +1,6 @@
 const allowedCors = [
-  'https://praktikum.tk',
-  'http://praktikum.tk',
+  'https://mesto.project.nomoredomains.monster',
+  'http://mesto.project.nomoredomains.monster',
   'http://localhost:3000',
 ];
 
