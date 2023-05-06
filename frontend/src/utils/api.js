@@ -8,6 +8,7 @@ class Api{
       this._profileInfo = fetch(`${this._url}/users/me`, {
         method: 'GET',
         headers: this._headers,
+        credentials: 'include',
       })
       .then(this._checkPromise);
       return this._profileInfo;
@@ -17,6 +18,7 @@ class Api{
       this._cards = fetch(`${this._url}/cards`, {
         method: 'GET',
         headers: this._headers,
+        credentials: 'include',
       })
         .then(this._checkPromise);
          return this._cards;
@@ -26,6 +28,7 @@ class Api{
       this._editInfo = fetch(`${this._url}/users/me`, {
         method: 'PATCH',
         headers: this._headers,
+        credentials: 'include',
         body: JSON.stringify({
           name: userOpinion.name,
           about: userOpinion.about,
@@ -39,6 +42,7 @@ class Api{
       this._newCards = fetch(`${this._url}/cards`, {
         method: 'POST',
         headers: this._headers,
+        credentials: 'include',
         body: JSON.stringify({
           name: name,
           link: link,
@@ -52,6 +56,7 @@ class Api{
       this._addedLike = fetch(`${this._url}/cards/${like._id}/likes`, {
         method: 'PUT',
         headers: this._headers,
+        credentials: 'include',
       })
       .then(this._checkPromise);
       return this._addedLike;
@@ -61,6 +66,7 @@ class Api{
       this._removedLike = fetch(`${this._url}/cards/${like._id}/likes`, {
         method: 'DELETE',
         headers: this._headers,
+        credentials: 'include',
       })
       .then(this._checkPromise);
       return this._removedLike;
@@ -70,6 +76,7 @@ class Api{
       this._deletedCard = fetch(`${this._url}/cards/${id}`, {
         method: 'DELETE',
         headers: this._headers,
+        credentials: 'include',
       })
       .then(this._checkPromise);
       return this._deletedCard;
@@ -78,6 +85,7 @@ class Api{
     changeLikeCardStatus(cardId, isLiked) {
       this._likedCard = fetch(`${this._url}/cards/likes/${cardId}`, {
           method: isLiked ? "PUT" : "DELETE",
+          credentials: 'include',
           headers: this._headers,
       })
       .then(this._checkPromise);
@@ -88,6 +96,7 @@ class Api{
       this._avatar = fetch(`${this._url}/users/me/avatar`, {
         method: 'PATCH',
         headers: this._headers,
+        credentials: 'include',
         body: JSON.stringify({
           avatar: link.avatar,
         }),

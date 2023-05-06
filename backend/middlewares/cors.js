@@ -1,4 +1,5 @@
 const allowedCors = [
+  'https://api.mesto.project.nomoredomains.monster/',
   'https://mesto.project.nomoredomains.monster',
   'http://mesto.project.nomoredomains.monster',
   'http://localhost:3000',
