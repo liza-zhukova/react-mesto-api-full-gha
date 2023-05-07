@@ -33,7 +33,7 @@ module.exports.deleteCard = (req, res, next) => {
     .then((card) => {
       if (card.owner._id.toString() !== req.user._id) {
         return Promise.reject(new ForbiddenError('Недостаточно прав'));
-      } return Card.remove();
+      } return card.deleteOne();
     })
     .then((card) => res.send(card))
     .catch((err) => {

@@ -5,6 +5,8 @@ const {
 } = require('../controllers/users');
 const { validateUrl } = require('../utils/validateUrl');
 
+router.get('/users/me', getProfile);
+
 router.get('/users', getUsers);
 router.get(
   '/users/:userId',
@@ -35,7 +37,5 @@ router.patch(
   }),
   updateAvatar,
 );
-
-router.get('/users/me', getProfile);
 
 module.exports = router;

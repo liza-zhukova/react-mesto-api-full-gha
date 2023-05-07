@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -20,6 +21,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(checkSource);
 
 app.use(requestLogger);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -54,16 +59,12 @@ app.post(
 
 app.use(auth);
 
+app.use(require('./routes/users'));
+app.use(require('./routes/cards'));
+
 app.use('*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-
-app.use('/users', require('./routes/users'));
-app.use('/cards', require('./routes/cards'));
 
 app.use(errorLogger);
 
