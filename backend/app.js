@@ -32,8 +32,6 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use(auth);
-
 app.post(
   '/signin',
   celebrate({
@@ -58,6 +56,8 @@ app.post(
   }),
   createUser,
 );
+
+app.use(auth);
 
 app.use(require('./routes/users'));
 app.use(require('./routes/cards'));
