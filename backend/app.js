@@ -16,9 +16,9 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mestodb');
-
 app.use(checkSource);
+
+mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.use(requestLogger);
 
@@ -59,8 +59,8 @@ app.post(
 
 app.use(auth);
 
-app.use(require('./routes/users'));
-app.use(require('./routes/cards'));
+app.use('/', require('./routes/users'));
+app.use('/', require('./routes/cards'));
 
 app.use('*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
