@@ -42,7 +42,7 @@ export const BASE_URL = 'https://api.mesto.project.nomoredomains.monster';
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          Authorization : `Bearer ${token}`
+          'authorization' : `Bearer ${token}`
         },
       })
       .then(getResponse)

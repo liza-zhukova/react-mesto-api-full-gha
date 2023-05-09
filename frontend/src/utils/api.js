@@ -21,7 +21,7 @@ class Api{
         credentials: 'include',
       })
         .then(this._checkPromise);
-         return this._cards;
+        return this._cards;
     }
   
     editProfile(userOpinion) {
@@ -83,7 +83,7 @@ class Api{
     }
 
     changeLikeCardStatus(cardId, isLiked) {
-      this._likedCard = fetch(`${this._url}/cards/likes/${cardId}`, {
+      this._likedCard = fetch(`${this._url}/cards/${cardId}/likes`, {
           method: isLiked ? "PUT" : "DELETE",
           credentials: 'include',
           headers: this._headers,
@@ -113,9 +113,14 @@ class Api{
     }
   }
 
-  export const api = new Api({
-    url:'https://api.mesto.project.nomoredomains.monster',
+
+
+  const api = new Api({
+    url: 'https://api.mesto.project.nomoredomains.monster',
     headers: {
       'Content-Type': 'application/json',
+      authorization : `Bearer ${localStorage.getItem('jwt')}`,
     },
-  });
+  })
+
+  export { api };
